@@ -1,0 +1,112 @@
+$main: #00A7E5
+$main-dark: #008BBF
+
+@import form
+
+*, *::before, *::after
+  box-sizing: border-box
+
+html, body, .container
+  width: 100%
+
+.flex
+  display: flex
+
+.none
+  display: none !important
+
+.mb-4
+  margin-bottom: 1rem
+
+.u-full-width
+  width: 100%
+
+.text-center
+  text-align: center
+
+.text-muted
+  color: #BDBDBD
+
+img
+  max-width: 100%
+
+.container
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  align-items: center
+  align-content: center
+  height: 100vh
+
+  .form-card
+    margin-right: auto
+    margin-left: auto
+    max-width: 430px
+    // width: 100%
+    padding: 15px
+    text-align: center
+  
+  .cat
+    position: relative
+    display: block
+    a
+      position: absolute
+      top: 50%
+      right: 0
+      display: inline-block
+      text-decoration: none
+      color: $main
+      &:hover
+        color: $main-dark
+  
+  .tab-title
+    display: flex
+    justify-content: space-around
+    a
+      display: block
+      width: 100%
+      line-height: 2
+      border-bottom: 1px solid rgba($main, .7)
+      text-decoration: none
+      color: rgba($main, .5)
+      &.active
+        background: rgba($main, .7)
+        color: #FFF
+
+  .input-group
+    display: flex
+    align-items: center
+    justify-content: center
+    label
+      flex: 0 0 auto
+      margin-bottom: 0
+      padding-right: .5rem
+  
+  .button
+    display: inline-block
+    padding: .25rem 3rem
+    line-height: 1
+    background: #FFF
+    border-radius: .5rem
+    cursor: pointer
+    outline: none
+    transition: background .2s, border-color .2s, color .2s
+
+  .button-primary
+    border: 2px solid $main
+    color: $main
+    svg
+      transition: transform .2s, fill .2s
+    &:hover
+      background: $main-dark
+      border-color: $main-dark
+      color: #FFF
+      svg
+        transform: rotateY(180deg)
+      path
+        fill: #FFF
+  
+  .error
+    width: 100%
+    text-align: center
+    color: #f44336

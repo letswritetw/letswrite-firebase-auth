@@ -1,0 +1,200 @@
+input[type=email],
+input[type=number],
+input[type=search],
+input[type=text],
+input[type=tel],
+input[type=url],
+input[type=password],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px;
+  /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type=email],
+input[type=number],
+input[type=search],
+input[type=text],
+input[type=tel],
+input[type=url],
+input[type=password],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=search]:focus,
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=url]:focus,
+input[type=password]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #00A7E5;
+  outline: 0;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  display: inline;
+}
+
+label > .label-body {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-weight: normal;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, .container {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.none {
+  display: none !important;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.u-full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-muted {
+  color: #BDBDBD;
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100vh;
+}
+.container .form-card {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 430px;
+  padding: 15px;
+  text-align: center;
+}
+.container .cat {
+  position: relative;
+  display: block;
+}
+.container .cat a {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: inline-block;
+  text-decoration: none;
+  color: #00A7E5;
+}
+.container .cat a:hover {
+  color: #008BBF;
+}
+.container .tab-title {
+  display: flex;
+  justify-content: space-around;
+}
+.container .tab-title a {
+  display: block;
+  width: 100%;
+  line-height: 2;
+  border-bottom: 1px solid rgba(0, 167, 229, 0.7);
+  text-decoration: none;
+  color: rgba(0, 167, 229, 0.5);
+}
+.container .tab-title a.active {
+  background: rgba(0, 167, 229, 0.7);
+  color: #FFF;
+}
+.container .input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container .input-group label {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+  padding-right: 0.5rem;
+}
+.container .button {
+  display: inline-block;
+  padding: 0.25rem 3rem;
+  line-height: 1;
+  background: #FFF;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.container .button-primary {
+  border: 2px solid #00A7E5;
+  color: #00A7E5;
+}
+.container .button-primary svg {
+  transition: transform 0.2s, fill 0.2s;
+}
+.container .button-primary:hover {
+  background: #008BBF;
+  border-color: #008BBF;
+  color: #FFF;
+}
+.container .button-primary:hover svg {
+  transform: rotateY(180deg);
+}
+.container .button-primary:hover path {
+  fill: #FFF;
+}
+.container .error {
+  width: 100%;
+  text-align: center;
+  color: #f44336;
+}

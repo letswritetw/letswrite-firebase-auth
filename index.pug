@@ -1,0 +1,172 @@
+- var link = 'firebase-auth'
+- var title = '用 Firebase Authentication 做一套簡易會員系統 - 電子郵件 密碼'
+- var description = '用 Firebase Authentication 做一套簡易會員系統 - 電子郵件 密碼'
+
+<!DOCTYPE html>
+html(lang="zh-TW")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{title} - Augustus - Let's Write
+
+    link(rel="canonical", href=`https://letswrite.tw/${link}/`)
+    meta(property="og:url", content=`https://letswritetw.github.io/letswrite-${link}/`)
+
+    meta(property="fb:app_id", content="2435108729902508")
+    meta(property="og:type", content="website")
+
+    meta(property="og:site_name", content="Let's Write")
+    meta(property="og:title", content=`${title} - Augustus - Let's Write`)
+    meta(itemprop="name", content=`${title} - Augustus - Let's Write`)
+
+    meta(name="description", content=description)
+    meta(property="og:description", content=description)
+    meta(itemprop="description", content=description)
+
+    meta(itemprop="image", content=`https://letswritetw.github.io/${link}/fb.jpg`)
+    meta(property="og:image", content=`https://letswritetw.github.io/${link}/fb.jpg`)
+    meta(property="og:image:width", content="1200")
+    meta(property="og:image:height", content="630")
+    meta(property="og:image:alt", content=title)
+
+    link(rel="shortcut icon", href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png")
+
+    //- css
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css")
+    link(rel="stylesheet", href="dist/style.min.css")
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-PGQ9WQT');
+  body
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT", height="0", width="0", style="display:none;visibility:hidden")
+
+    // 是 登入 || 註冊
+    input#type(type="hidden", value="signin")
+
+    .container
+
+      // 未登入
+      section.user-null.none
+        
+        // 登入 || 註冊 表單
+        .form-card
+
+          .cat.mb-4
+            img(src="dist/cat_input.svg")
+            a(href="https://letswrite.tw/firebase-auth-email/", target="_blank") Let's Write 筆記文 »
+
+          .tab-title.mb-4
+            a.active(href="#", data-value="signin") 登入
+            a(href="#", data-value="create") 註冊
+
+          .input-group.mb-4
+            input#email.u-full-width(type="email", placeholder="輸入帳號")
+
+          .input-group.mb-4
+            input#password.u-full-width(type="password", placeholder="輸入密碼")
+
+          .input-group.mb-4
+            button#sign-up.button.button-primary(type="button")
+              include dist/cat_btn.svg
+          
+          .text-center
+            a#forgot.text-muted(href="") 忘記密碼
+
+      // 已登入
+      section.user-logged.none
+
+        .text-center.mb-4
+          p#user-email
+          p#user-uid
+          p#user-name
+          p#user-email-verify
+        
+        .input-group.mb-4
+          button#editor.button.button-primary(type="button") 更新顯示名稱
+        
+        .input-group.mb-4
+          button#changePassword.button.button-primary(type="button") 修改密碼
+        
+        .input-group.mb-4
+          button#verify-email.button.button-primary(type="button") 驗證信箱
+
+        .input-group.mb-4
+          button#logout.button.button-primary(type="button") 登出
+
+        .input-group.mb-4
+          button#delete-user.button.button-primary(type="button") 刪除帳號
+      
+
+
+      // 更新資料
+      section.user-editor.none
+        .input-group.mb-4
+          input#new-name.u-full-width(type="text", placeholder="輸入顯示名稱")
+        
+        .input-group.mb-4
+          button#sure-name.button.button-primary(type="button") 確認更新
+      
+
+
+      // 修改密碼
+      section.user-password.none
+        .input-group.mb-4
+          input#old-password-change.u-full-width(type="password", placeholder="輸入舊密碼")
+        .input-group.mb-4
+          input#new-password.u-full-width(type="password", placeholder="輸入新密碼")
+        
+        .input-group.mb-4
+          button#sure-password.button.button-primary(type="button") 確認更新
+      
+
+
+      // 刪除帳號
+      section.user-delete.none
+        .input-group.mb-4
+          input#old-password-delete.u-full-width(type="password", placeholder="輸入密碼")
+        
+        .input-group.mb-4
+          button#sure-delete.button.button-primary(type="button") 確認刪除
+
+
+      // 忘記密碼
+      section.user-forgot.none
+        .input-group.mb-4
+          input#new-forgot.u-full-width(type="text", placeholder="輸入您的帳號")
+        
+        .input-group.mb-4
+          button#sure-forgot.button.button-primary(type="button") 寄出修改密碼信
+      
+
+
+      // 錯誤訊息
+      #error-message.error
+
+
+    script(src='https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js')
+    script(src='https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js')
+    script.
+      var firebaseConfig = {
+        apiKey: "AIzaSyCFpMDt4vtV96zycNpJTxo73XvA4q9MIZQ",
+        authDomain: "letswrite-helpful-btn.firebaseapp.com",
+        databaseURL: "https://letswrite-helpful-btn.firebaseio.com",
+        projectId: "letswrite-helpful-btn",
+        storageBucket: "letswrite-helpful-btn.appspot.com",
+        messagingSenderId: "498690047881",
+        appId: "1:498690047881:web:dcb559143db6f145e26b58",
+        measurementId: "G-9YZ3G343K3"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js")
+    script(src="dist/main.min.js")
